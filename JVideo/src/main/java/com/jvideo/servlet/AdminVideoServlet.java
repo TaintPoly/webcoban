@@ -2,6 +2,7 @@ package com.jvideo.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -35,15 +36,16 @@ public class AdminVideoServlet extends HttpServlet {
 		String uriString = request.getRequestURI();
 		if(uriString.contains("add")) {
 			//thêm mới
+			request.getRequestDispatcher("/views/admin/videos/add.jsp").forward(request, response);
 		}else if(uriString.contains("edit")) {
 			//sửa
 		}else if(uriString.contains("delete")) {
 			//Xoa
 		}else {
 			//xem danh sách
-			list.clear();
-			list.add(new Video(1, "", "video 1", "", "", 0, true));
-			list.add(new Video(2, "", "video 2", "", "", 0, true));
+//			list.clear();
+//			list.add(new Video(1, "", "video 1", "", "",new Date(), 10000, true));
+//			list.add(new Video(2, "", "video 2", "", "", new Date(), 10000000, true));
 			request.setAttribute("list", list);
 			request.getRequestDispatcher("/views/admin/videos/list.jsp").forward(request, response);
 		}
@@ -54,7 +56,30 @@ public class AdminVideoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("utf-8");
+		String uriString = request.getRequestURI();
+		if(uriString.contains("add")) {
+			//thêm mới
+			String title = request.getParameter("title");
+			String poster  = request.getParameter("poster");
+			String youtubeId = request.getParameter("youtubeId");
+			String description  = request.getParameter("description");
+			String activeString  = request.getParameter("active");
+			boolean active = Boolean.parseBoolean(activeString);
+			Video video = new Video();
+			video.setId(0);
+			video.setTitle(title);
+			video.setPoster(poster);
+			video.setDescription(description);
+			video.setCreateDate(new Date());
+			video.setYoutubeId(youtubeId);
+			video.setActive(active);
+			list.add(video);
+			request.setAttribute("message", "Thêm mới thành công");
+			request.getRequestDispatcher("/views/admin/videos/add.jsp").forward(request, response);
+		}else {
+			//cập nhật
+		}
 	}
 
 }

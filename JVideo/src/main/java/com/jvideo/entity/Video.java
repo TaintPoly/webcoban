@@ -1,5 +1,7 @@
 package com.jvideo.entity;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +15,7 @@ public class Video {
 	String title;
 	String poster;
 	String description;
+	Date createDate;
 	int viewCount;
 	boolean active;
 }

@@ -13,20 +13,18 @@
 </head>
 <body>
 	<div class="container">
-		<header>
+		<jsp:include page="/views/admin/header.jsp"></jsp:include>
 		
-		</header>
-		<nav>
-		
-		</nav>
-		
+		<jsp:include page="/views/admin/menu.jsp"></jsp:include>
 		<main>
 			<h1>Danh sách video</h1>
+			<a href="/JVideo/admin/videos/add" class="btn btn-primary float-end">Thêm mới</a>
 			<table class="table">
 			  <thead>
 			    <tr>
 			      <th scope="col">#</th>
 			      <th scope="col">First</th>
+			      <th scope="col">Last</th>
 			      <th scope="col">Last</th>
 			      <th scope="col">Hành động</th>
 			    </tr>
@@ -36,7 +34,8 @@
 				    <tr>
 				      <th scope="row">${vd.id}</th>
 				      <td>${vd.title}</td>
-				      <td>Otto</td>
+				      <td><fmt:formatNumber value="${vd.viewCount}" pattern="#,###.0"></fmt:formatNumber> </td>
+				      <td><fmt:formatDate value="${vd.createDate}" pattern="dd-MM-yyyy hh:mm:ss"/></td>
 				      <td>
 				      	<c:if test="${vd.active}">
 				      		<a href="#">Ngưng hoạt động</a>
