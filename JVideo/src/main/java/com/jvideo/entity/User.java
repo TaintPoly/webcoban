@@ -1,7 +1,5 @@
 package com.jvideo.entity;
 
-import java.util.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,19 +14,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "videos")
-public class Video {
+@Table(name = "users")
+public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
-	@Column(name = "youtube_id")
-	String youtubeId;
-	String title;
-	String poster;
-	String description;
-	@Column(name = "create_date")
-	Date createDate;
-	@Column(name = "view_count")
-	int viewCount;
-	boolean active;
+	@Column(unique = true)
+	String email;
+	String password;
+	@Column(name = "full_name")
+	String fullName;
+	boolean admin;
 }

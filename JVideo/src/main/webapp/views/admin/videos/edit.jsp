@@ -17,27 +17,27 @@
 		
 		<jsp:include page="/views/admin/menu.jsp"></jsp:include>
 		<main>
-			<h1>Thêm mới video</h1>
+			<h1>Chỉnh sửa video</h1>
 			<label class="text-success">${message }</label>
 			<label class="text-danger">${message_error }</label>
-			<form action="/JVideo/admin/videos/add" method="post">
+			<form action="/JVideo/admin/videos/edit?id=${video.id}" method="post">
 				<div class="mb-3">
 				  <label for="title" class="form-label">Tiêu đề</label>
-				  <input type="text" class="form-control" id="title" name="title" placeholder="Tiêu đề" required>
+				  <input type="text" class="form-control" id="title" name="title" value="${video.title}"  required>
 					<label class="text-danger">${errors.title }</label>
 				</div>
 				<div class="mb-3">
 				  <label for="poster" class="form-label">Ảnh đại diện</label>
-				  <input type=text class="form-control" id="poster" name="poster" placeholder="Ảnh đại diện">
+				  <input type=text class="form-control" id="poster" name="poster" value="${video.poster}">
 					<label class="text-danger">${errors.poster }</label>
 				</div>
 				<div class="mb-3">
 				  <label for="poster" class="form-label">Youtube Id</label>
-				  <input type=text class="form-control" id="youtubeId" name="youtubeId" placeholder="Youtube Id">
+				  <input type=text class="form-control" id="youtubeId" name="youtubeId" value="${video.youtubeId}">
 				</div>
 				<div class="mb-3">
 				  <label for="description" class="form-label">Mô tả</label>
-				  <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+				  <textarea class="form-control" name="description" id="description" rows="3" >${video.description}</textarea>
 				</div>
 				
 				<div class="mb-3">

@@ -22,10 +22,10 @@
 			<table class="table">
 			  <thead>
 			    <tr>
-			      <th scope="col">#</th>
-			      <th scope="col">First</th>
-			      <th scope="col">Last</th>
-			      <th scope="col">Last</th>
+			      <th scope="col">Id</th>
+			      <th scope="col">Tiêu đề</th>
+			      <th scope="col">Lượt xem</th>
+			      <th scope="col">Trạng thái</th>
 			      <th scope="col">Hành động</th>
 			    </tr>
 			  </thead>
@@ -40,6 +40,11 @@
 				      	<c:if test="${vd.active}">
 				      		<a href="#">Ngưng hoạt động</a>
 				      	</c:if>
+				      	<c:if test="${!vd.active}">
+				      		<a href="#">Hoạt động</a>
+				      	</c:if>
+				      	<a href="/JVideo/admin/videos/edit?id=${vd.id}" class="btn btn-warning">Sửa</a>
+				      	<a href="/JVideo/admin/videos/delete?id=${vd.id}" class="btn btn-danger">Xóa</a>
 				      </td>
 				    </tr>
 			    </c:forEach>
