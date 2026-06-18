@@ -34,6 +34,7 @@ public class AuthServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//Login
 		String uriString = request.getRequestURI();
 		if(uriString.contains("login")) {
 			request.getRequestDispatcher("/views/login.jsp").forward(request, response);
